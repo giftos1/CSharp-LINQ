@@ -30,9 +30,19 @@ Console.WriteLine(CheckUpperCase.IsAnyWordUpperCaseLinq(wordsNoUpper));
 
 // LINQ and extension methods
 
-var numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+var numbers = new List<int> { 50, 21, 33, 75, 5, 1, 20, 9, 10 };
 var wordsLongerThan3Letters = words.Where(word => word.Length > 3);
 var oddNumbers = numbers.Where(number => number % 2 == 1);
 
 Console.WriteLine(string.Join(", ", wordsLongerThan3Letters));
 Console.WriteLine(string.Join(", ", oddNumbers));
+
+/* Method chaining */
+
+// Get odd numbers and order them
+var orderedNumbers = numbers
+    .Where(number => number % 2 == 1)
+    .OrderBy(number => number);
+
+Console.WriteLine(string.Join(", ", orderedNumbers));
+
