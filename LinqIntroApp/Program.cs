@@ -192,6 +192,38 @@ var allPetsCount = pets.Count();
 Console.WriteLine("allPetsCount " + allPetsCount);
 /*End Count Functionality*/
 
+/* OrderBy */
+var petsOrderedByName = pets.OrderBy(pet => pet.Name);
+Console.WriteLine("petsOrderedByName");
+Console.WriteLine(string.Join(", \n", petsOrderedByName));
+
+
+Console.WriteLine("petsOrderedById");
+var petsOrderedById = pets.OrderBy(pet => pet.Id);
+Console.WriteLine(string.Join(", \n", petsOrderedById));
+
+Console.WriteLine("Ordered Digits");
+var digits2 = new[] { 10, 25, 4, 6, 56, 7, 9 };
+var orderedDigitsDesc = digits2.OrderByDescending(digit => digit);
+Console.WriteLine(string.Join(", ", orderedDigitsDesc));
+
+
+Console.WriteLine("petsOrderedByTypeThenName");
+var petsOrderedByTypeThenName = pets
+    .OrderBy(pet => pet.Type)
+    .ThenBy(pet => pet.Name);
+Console.WriteLine(string.Join(", \n", petsOrderedByTypeThenName));
+
+public record Person(string Name, string Country);
+
+public record Pet(int Id, string Name, PetType Type, float Weight);
+public enum PetType
+{
+    Dog,
+    Cat,
+    Fish,
+    Bird
+}
 
 
 
@@ -250,24 +282,3 @@ public static int CountListsContainingZeroLongerThan(int length, List<List<int>>
              
 }
  */
-
-
-
-
-
-
-
-
-
-
-
-public record Person(string Name, string Country);
-
-public record Pet(int Id, string Name, PetType Type, float Weight);
-public enum PetType
-{
-    Dog,
-    Cat,
-    Fish,
-    Bird
-}
