@@ -175,7 +175,19 @@ var isNotEmpty = pets.Any(); // returns true if there is at least one element an
 var doAllHaveNonEmptynames = pets.All(pet => !string.IsNullOrEmpty(pet.Name));
 Console.WriteLine("doAllHaveNonEmptynames " + doAllHaveNonEmptynames);
 
+// returns long
+var countOfDogs = pets.Count(pet => pet.Type == PetType.Dog);
+Console.WriteLine("countOfDogs " + countOfDogs);
 
+var countOfPetsNameMolly = pets.Count(pet => pet.Name == "Molly");
+Console.WriteLine("countOfPetsNameMolly " + countOfPetsNameMolly);
+
+var countDogsHeavierThan10 = pets.Count(pet => pet.Type == PetType.Dog && pet.Weight > 10);
+Console.WriteLine("countDogsGreaterThan10 " + countDogsHeavierThan10);
+
+
+var allPetsCount = pets.Count();
+Console.WriteLine("allPetsCount " + allPetsCount);
 
 /*Exercise
  
