@@ -131,6 +131,49 @@ foreach (var shoe in shoesStartingWithN)
 {
     Console.WriteLine(shoe + " ");
 }
-public record Person(string Name, string Country);
-//var allAussies = aussies.Where(aussie => )
+
+
 /* End Method chaining */
+Console.WriteLine();
+Console.WriteLine();
+var digits = new [] { 10, 25, 4, 6, 56, 7, 9 };
+bool isAnyLargerThan10 = digits.Any(digit => digit > 10);
+Console.WriteLine("isAnyLargerThan10 " + isAnyLargerThan10);
+
+
+Console.WriteLine();
+Console.WriteLine();
+
+var pets = new[]
+{
+    new Pet(1, "Max", PetType.Fish, 1.1f),
+    new Pet(2, "Bella", PetType.Dog, 12.5f),
+    new Pet(3, "Charlie", PetType.Cat, 8.3f),
+    new Pet(4, "Lucy", PetType.Dog, 10.0f),
+    new Pet(5, "Daisy", PetType.Bird, 0.5f),
+    new Pet(6, "Molly", PetType.Cat, 9.0f),
+    new Pet(7, "Buddy", PetType.Dog, 15.2f),
+};
+
+var isAnyPetNamedLucy = pets.Any(pet => pet.Name == "Lucy");
+Console.WriteLine("isAnyPetNamedLucy " + isAnyPetNamedLucy);
+
+var isAnyDog = pets.Any(pet => pet.Type == PetType.Dog );
+Console.WriteLine("isAnyDog " + isAnyDog);
+
+var isThereAVerySpecificPet = pets.Any(pet => pet.Name.Length > 4 && pet.Id % 2 == 0);
+Console.WriteLine("isThereAVerySpecificPet " + isThereAVerySpecificPet);
+
+var isNotEmpty = pets.Any(); // returns true if there is at least one element and false if empty
+
+
+public record Person(string Name, string Country);
+
+public record Pet(int Id, string Name, PetType Type, float Weight);
+public enum PetType
+{
+    Dog,
+    Cat,
+    Fish,
+    Bird
+}
