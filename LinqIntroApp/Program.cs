@@ -134,11 +134,17 @@ foreach (var shoe in shoesStartingWithN)
 
 
 /* End Method chaining */
+
 Console.WriteLine();
 Console.WriteLine();
-var digits = new [] { 10, 25, 4, 6, 56, 7, 9 };
+var digits = new[] { 10, 25, 4, 6, 56, 7, 9 };
 bool isAnyLargerThan10 = digits.Any(digit => digit > 10);
 Console.WriteLine("isAnyLargerThan10 " + isAnyLargerThan10);
+
+var areAllLargerThan10 = digits.All(digit => digit > 10);
+Console.WriteLine("areAllLargerThan10 " + areAllLargerThan10);
+
+
 
 
 Console.WriteLine();
@@ -158,13 +164,52 @@ var pets = new[]
 var isAnyPetNamedLucy = pets.Any(pet => pet.Name == "Lucy");
 Console.WriteLine("isAnyPetNamedLucy " + isAnyPetNamedLucy);
 
-var isAnyDog = pets.Any(pet => pet.Type == PetType.Dog );
+var isAnyDog = pets.Any(pet => pet.Type == PetType.Dog);
 Console.WriteLine("isAnyDog " + isAnyDog);
 
 var isThereAVerySpecificPet = pets.Any(pet => pet.Name.Length > 4 && pet.Id % 2 == 0);
 Console.WriteLine("isThereAVerySpecificPet " + isThereAVerySpecificPet);
 
 var isNotEmpty = pets.Any(); // returns true if there is at least one element and false if empty
+
+var doAllHaveNonEmptynames = pets.All(pet => !string.IsNullOrEmpty(pet.Name));
+Console.WriteLine("doAllHaveNonEmptynames " + doAllHaveNonEmptynames);
+
+
+
+/*Exercise
+ 
+ Any & All
+Using LINQ, implement the IsAnyWordWhiteSpace method, which checks if, in a given collection of strings, any word consists only of white space characters.
+
+White space characters are all "empty" chars, like a space or a new line symbol. We can check if a character is a white space by using the char.IsWhiteSpace method.
+
+For example:
+
+for words {"hello", "There    "} the result shall be false because no word consists only of white space characters
+
+for words {"hello", "      "}, the result shall be true because "      " consists only of white space characters
+
+for empty collection, the result shall be false because no word consists only of whitespace characters (because there are no words at all)
+ 
+ Answer:
+
+public static bool IsAnyWordWhiteSpace(List<string> words) 
+{
+    
+    return words.Any(word => word.All(letter => char.IsWhiteSpace(letter)));
+}
+ 
+ */
+
+
+
+
+
+
+
+
+
 
 
 public record Person(string Name, string Country);
