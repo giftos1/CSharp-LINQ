@@ -144,7 +144,8 @@ Console.WriteLine("isAnyLargerThan10 " + isAnyLargerThan10);
 var areAllLargerThan10 = digits.All(digit => digit > 10);
 Console.WriteLine("areAllLargerThan10 " + areAllLargerThan10);
 
-
+bool is7Present = digits.Contains(7);
+Console.WriteLine("is7Present " + is7Present);
 
 
 Console.WriteLine();
@@ -175,7 +176,8 @@ var isNotEmpty = pets.Any(); // returns true if there is at least one element an
 var doAllHaveNonEmptynames = pets.All(pet => !string.IsNullOrEmpty(pet.Name));
 Console.WriteLine("doAllHaveNonEmptynames " + doAllHaveNonEmptynames);
 
-// returns long
+/*Count Functionality */
+// Count returns long by default
 var countOfDogs = pets.Count(pet => pet.Type == PetType.Dog);
 Console.WriteLine("countOfDogs " + countOfDogs);
 
@@ -188,6 +190,11 @@ Console.WriteLine("countDogsGreaterThan10 " + countDogsHeavierThan10);
 
 var allPetsCount = pets.Count();
 Console.WriteLine("allPetsCount " + allPetsCount);
+/*End Count Functionality*/
+
+
+
+
 
 /*Exercise
  
@@ -212,6 +219,36 @@ public static bool IsAnyWordWhiteSpace(List<string> words)
     return words.Any(word => word.All(letter => char.IsWhiteSpace(letter)));
 }
  
+Count & Contains
+Implement the CountListsContainingZeroLongerThan method. It takes the following parameters:
+
+length of type int
+
+listsOfNumbers of type List of Lists of ints
+
+This method should return the count of the lists that meet the following conditions:
+
+Contain the number zero
+
+Are longer than length
+
+For example, for length 3 and the following lists contained in the listsOfNumbers:
+
+{1, 2, 5, -1}
+
+{0, 4, 4, 6}
+
+{9, 0}
+
+The result shall be 1 because there is only one list that contains zero, and has more than 3 items.
+
+Answer:
+public static int CountListsContainingZeroLongerThan(int length, List<List<int>> listsOfNumbers)
+{
+    //your code goes here
+    return listsOfNumbers.Count(array => array.Contains(0) && array.Count() > length);
+             
+}
  */
 
 
